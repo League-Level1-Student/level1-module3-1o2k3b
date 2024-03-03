@@ -31,7 +31,7 @@ public class Frogger extends PApplet {
             }
             else if(keyCode == LEFT)
             {
-            	X = X+3;
+            	X = X-3;
                 //Frog X position goes left
             }
         }

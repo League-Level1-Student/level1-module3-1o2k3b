@@ -25,15 +25,24 @@ import game_tools.Sound;
  * Complete the main method
  */
 public class CowTimer {
-    private int seconds;
-
+    int seconds;
+    public CowTimer() {
+    	this.seconds = 5;
+    }
     public void setTime(int seconds) {
         this.seconds = seconds;
         System.out.println("Cow time set to " + this.seconds + " seconds.");
     }
 
     public void start() throws InterruptedException {
-        
+        for(seconds = 5; seconds>0; seconds--) {
+        System.out.println(seconds);
+        Thread.sleep(1000);
+        if(seconds == 1) {
+        	playSound("moo.wav");
+        }
+       
+        }
     }
 
     public void playSound(final String file) {
@@ -41,4 +50,6 @@ public class CowTimer {
         Sound sound = new Sound(fileName);
         sound.play();
     }
-}
+   
+    }
+
