@@ -3,18 +3,19 @@ package _06_frogger;
 import processing.core.PApplet;
 
 public class Frogger extends PApplet {
-    static final int WIDTH = 600;
-    static final int HEIGHT = 400;
+    static final int WIDTH = 800;
+    static final int HEIGHT = 600;
     int X;
     int Y;
     int carSpeed = 20;
     int carSize = 75;
     int carX = 50;
     int carY = 350;
-    Car car = new Car(carX, carY, carSize, carSpeed);
+    int TopCarY = 150;
+    Car car;
     @Override
     public void settings() {
-        size(800, 600);
+        size(WIDTH, HEIGHT);
     }
     public void keyPressed()
     {
@@ -43,7 +44,7 @@ public class Frogger extends PApplet {
     }
     @Override
     public void setup() {
-car.display();
+    	   car = new Car(carX, carY, carSize, carSpeed);
     }
 
     @Override
@@ -51,7 +52,12 @@ car.display();
 background(10, 83, 175);
 fill(16, 150, 82);
 ellipse(375, 500, 45, 45);
-
+fill(107, 0, 0);
+car.move();
+rect(car.carX , carY,  carSize, 50);
+car.topMove();
+fill(16, 97, 156);
+rect(car.topCarX, TopCarY, carSize, 50);
     }
     public void walls(int X, int Y) {
     	if(X >= 550) {
