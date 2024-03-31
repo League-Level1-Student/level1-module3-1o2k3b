@@ -32,6 +32,13 @@ if(topCarX<=-50) {
 	topCarX=800;
 }
 }
+	public void upMove() {
+		if(carX>=1000) {
+			carX = 0;
+		}
+	}
+
+
 
 
 }

@@ -1,13 +1,17 @@
 package _06_frogger;
 
+import javax.swing.JOptionPane;
+
 import processing.core.PApplet;
 
 public class Frogger extends PApplet {
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
-    int X;
-    int Y;
-    int carSpeed = 20;
+    int X = 322;
+    int Y = 550;
+    int targetX = X;
+    int targetY = Y;
+    int carSpeed = 5;
     int carSize = 75;
     int carX = 50;
     int carY = 350;
@@ -20,24 +24,25 @@ public class Frogger extends PApplet {
     public void keyPressed()
     {
         if(key == CODED){
-            if(keyCode == UP)
+            if(keyCode == UP && targetY == Y)
             {
-            	Y = Y - 3;
+            	targetY = Y - 80;
+            	
                 //Frog Y position goes up
             }
-            else if(keyCode == DOWN)
+            else if(keyCode == DOWN && targetY == Y)
             {
-            	Y = Y + 3;
+            	targetY = Y + 80;
                 //Frog Y position goes down 
             }
-            else if(keyCode == RIGHT)
+            else if(keyCode == RIGHT && targetX == X)
             {
-            	X = X+3;
+            	targetX = X + 80;
                 //Frog X position goes right
             }
-            else if(keyCode == LEFT)
+            else if(keyCode == LEFT && targetX == X)
             {
-            	X = X-3;
+            	targetX = X - 80;
                 //Frog X position goes left
             }
         }
@@ -49,15 +54,51 @@ public class Frogger extends PApplet {
 
     @Override
     public void draw() {
+    	if(targetY<Y) {
+    		Y = Y-8;
+    	}
+    	if(targetY>Y) {
+    		Y = Y+8;
+    	}
+    	if(targetX>X) {
+    		X = X+8;
+    	}
+     	if(targetX<X) {
+    		X = X-8;
+    	}
+     	if(targetX<0) {
+     		targetX = 10;
+     	}
+     	if(targetX>792) {
+     		targetX =targetX-16;
+     	}
+     	if(targetY>592) {
+     		targetY =targetY-16;
+     	}
+     	if(targetY<8) {
+     		targetY =targetY+16;
+     	}
+     	System.out.println(car.carX + " " + car.carY + " " + car.topCarX + " " + car.topCarY + " " + X+ " " + Y);
+if(X>car.carX && X<car.carX+75) {
+	if(Y<carY+75 && Y>carY) {
+		JOptionPane.showInputDialog("your frog got sidelined by a car");
+	}
+}
 background(10, 83, 175);
 fill(16, 150, 82);
-ellipse(375, 500, 45, 45);
+ellipse(X, Y, 45, 45);
 fill(107, 0, 0);
 car.move();
 rect(car.carX , carY,  carSize, 50);
 car.topMove();
 fill(16, 97, 156);
-rect(car.topCarX, TopCarY, carSize, 50);
+rect(car.topCarX, 250, carSize, 50);
+car.upMove();
+fill(178, 78, 0);
+rect(car.carX, 150, carSize, 50);
+car.topMove();
+fill(67, 179, 98);
+rect(car.topCarX, 65, carSize, 50);
     }
     public void walls(int X, int Y) {
     	if(X >= 550) {
