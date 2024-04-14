@@ -6,7 +6,7 @@ int topCarX = 800;
 int topCarY;
 int carY;
 int carSize;
-int carSpeed;
+int carSpeed = 8;
 int topCarSpeed;
 	public Car(int carX, int carY, int carSize, int carSpeed) {
 		this.carX = carX;

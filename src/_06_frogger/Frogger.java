@@ -3,6 +3,7 @@ package _06_frogger;
 import javax.swing.JOptionPane;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Frogger extends PApplet {
     static final int WIDTH = 800;
@@ -11,7 +12,7 @@ public class Frogger extends PApplet {
     int Y = 550;
     int targetX = X;
     int targetY = Y;
-    int carSpeed = 5;
+    int carSpeed = 8;
     int carSize = 75;
     int carX = 50;
     int carY = 350;
@@ -78,10 +79,40 @@ public class Frogger extends PApplet {
      	if(targetY<8) {
      		targetY =targetY+16;
      	}
-     	System.out.println(car.carX + " " + car.carY + " " + car.topCarX + " " + car.topCarY + " " + X+ " " + Y);
+
 if(X>car.carX && X<car.carX+75) {
 	if(Y<carY+75 && Y>carY) {
-		JOptionPane.showInputDialog("your frog got sidelined by a car");
+	targetX = 240;
+	targetY = 640;
+	X = 240;
+	Y = 560;
+}
+	}
+
+if(X>car.topCarX && X<car.topCarX+75) {
+	if(Y<250+75 && Y>250) {
+
+		targetX = 240;
+		targetY = 640;
+		X = 240;
+		Y = 560;
+	}
+}
+if(X>car.carX && X<car.carX+75) {
+	if(Y<225 && Y>150) {
+	targetX = 240;
+	targetY = 640;
+	
+	X = 240;
+	Y = 560;
+}
+	}
+if(X>car.topCarX && X<car.topCarX+75) {
+	if(Y<125 && Y>50) {
+		targetX = 240;
+		targetY = 640;
+		X = 240;
+		Y = 560;
 	}
 }
 background(10, 83, 175);
